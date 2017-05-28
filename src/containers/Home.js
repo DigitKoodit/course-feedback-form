@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
-// import Header from './common/Header';
+import CourseList from '../components/CoursesList';
 
 const Home = () => (
   <div>
-    <h1>Hello!</h1>
+    <h1>Kurssipalautemokkula</h1>
+    <CourseList />
   </div>
 )
 
 Home.propTypes = {
 };
+
 
 export default Home

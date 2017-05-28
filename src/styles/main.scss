@@ -2,7 +2,6 @@
 @import '~flexboxgrid';
 @import 'general';
 @import 'variables';
-
 body {
     background: #f1f1f1;
     /* fallback for old browsers */
@@ -173,7 +172,6 @@ a {
     z-index: 1;
     left: 50%;
     bottom: 2rem;
-
     &.show {
         visibility: visible;
         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -219,4 +217,13 @@ a {
             opacity: 0;
         }
     }
+}
+
+// Course selection
+.select {
+    padding: 0.5rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+    -webkit-border-radius: 0.5em;
+    border-radius: 0.2em;
 }
