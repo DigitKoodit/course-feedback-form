@@ -25,10 +25,10 @@ class CommentContainer extends Component {
 
     return (
       <div className="row center-xs">
-        <div className="col-xs-12 col-sm-8 col-md-6 margin-1">
+        <div className="col-xs-12 col-sm-10 col-md-8 margin-1">
           <InputForm
             content={newComment}
-            onSubmit={() => console.log('hellou')}
+            onSubmit={() => console.log('implement submit')}
             onChange={this.handleChange}
           />
         </div>

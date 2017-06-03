@@ -34,16 +34,18 @@ class Home extends Component {
     const { activeCourse } = this.state;
     const { courses } = this.props;
     return (
-      <div >
-        <h1>Kurssipalautemokkula</h1>
-        <CoursePicker
-          activeCourse={activeCourse}
-          courses={courses}
-          handleSelect={this.handleSelect}
-        />
-        <CommentContainer
-          activeCourse={activeCourse}
-        />
+      <div className="row center-xs">
+        <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6 app-card">
+          <h1>Kurssipalautemokkula</h1>
+          <CoursePicker
+            activeCourse={activeCourse}
+            courses={courses}
+            handleSelect={this.handleSelect}
+          />
+          <CommentContainer
+            activeCourse={activeCourse}
+          />
+        </div >
       </div >
     )
   }

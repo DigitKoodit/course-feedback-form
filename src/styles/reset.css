@@ -71,7 +71,7 @@ p {
 sup {
     position: relative;
     top: -.5em;
-    vertical-align: baseline;
+    vertical-align: baine;
     font-size: 75%;
     line-height: 0;
 }
@@ -113,4 +113,15 @@ button {
 ::-moz-focus-inner {
     border: 0;
     padding: 0;
+}
+
+
+/*Added by Niemisami*/
+
+textarea,
+input,
+button,
+select {
+    font-family: inherit;
+    font-size: inherit;
 }
