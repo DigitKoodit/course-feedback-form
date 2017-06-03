@@ -4,6 +4,7 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   courses: [],
   comments: [],
+  newComment: '',
   activeCourseId: ''
 }
 
@@ -13,13 +14,11 @@ export default function courseReducer(state = initialState, action) {
     case types.REQUEST_COMMENTS:
       return state;
     case types.REQUEST_COURSES_SUCCESS:
-      console.log(action.comments);
       return {
         ...state,
         courses: action.courses
       };
     case types.REQUEST_COMMENTS_SUCCESS:
-      console.log(action.comments);
       return {
         ...state,
         comments: action.comments,

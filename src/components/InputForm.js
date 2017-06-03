@@ -1,28 +1,38 @@
 import React, { PropTypes } from 'react';
-
+import Textarea from '../components/Textarea';
 
 const InputForm = ({
   content,
   errors,
   onSubmit,
   onChange
-}) =>
-  (
-    <div className="form">
+}) => {
+  const handleSubmit = event => {
+    event.preventDefault();
+    onSubmit();
+  }
 
-      <form className="login-form">
-        <input type="text" onChange={onChange} value={content.comment} placeholder="email" />
-        <button onClick={onSubmit}>login</button>
-        <p className="message">Not registered? <a onClick={() => console.log('TODO: redirect')}> Create an account</a></p>
-        <
+  return (
+    <div className="form">
+      <form className="comment-form" onSubmit={handleSubmit}>
+        <Textarea
+          title="Palaute"
+          onTextChange={onChange}
+          value={content}
+        />
+        <button className="btn" type="submit">Lähetä</button>
       </form>
     </div>
   )
+}
+
 
 
 InputForm.propTypes = {
-  content: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+  content: PropTypes.string.isRequired,
+  errors: PropTypes.shape({
+    commentForm: PropTypes.string
+  }).isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired
 }

@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
 
   render() {
     const {
-        authenticated,
+      authenticated,
       login,
       logout
     } = this.props;
