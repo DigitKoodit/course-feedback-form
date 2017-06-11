@@ -1,22 +1,26 @@
 export default [
   {
-    "id": "opkokid_19412",
+    "id": "DIGIT",
+    "name": "Digit ry"
+  },
+  {
+    "id": "opkokid_25832",
     "name": "Polytekniset perusopinnot"
   },
   {
-    "id": "opkokid_22698",
+    "id": "opkokid_28744",
     "name": "Pääaine"
   },
   {
-    "id": "opkokid_19162",
+    "id": "opkokid_26096",
     "name": "Kandidaattitutkielma ja seminaari"
   },
   {
-    "id": "opkokid_19160",
+    "id": "opkokid_26097",
     "name": "Kieli- ja viestintäopinnot"
   },
   {
-    "id": "opkokid_19404",
+    "id": "opkokid_25840",
     "name": "Sivuaine"
   }
 ]

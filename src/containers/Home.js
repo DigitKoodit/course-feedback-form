@@ -8,7 +8,6 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       activeCourse: this.initialActiveCourse
     }
@@ -32,13 +31,14 @@ class Home extends Component {
 
   render() {
     const { activeCourse } = this.state;
-    const { courses } = this.props;
+    const { modules, courses } = this.props;
     return (
       <div className="row center-xs">
         <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6 app-card">
           <h1>Kurssipalautemokkula</h1>
           <CoursePicker
             activeCourse={activeCourse}
+            modules={modules}
             courses={courses}
             handleSelect={this.handleSelect}
           />
@@ -52,6 +52,10 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+  modules: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  })).isRequired,
   courses: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -60,6 +64,7 @@ Home.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  modules: state.course.modules,
   courses: state.course.courses
 })
 

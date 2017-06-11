@@ -1,7 +1,21 @@
 import * as types from './actionTypes';
 
+import dummyModules from '../dummyModules';
 import dummyCourses from '../dummyCourses';
 import dummyComments from '../dummyComments';
+
+export const fetchModules = () => dispatch => {
+  dispatch({
+    type: types.REQUEST_MODULES
+  });
+
+  const modules = dummyModules;
+
+  dispatch({
+    type: types.REQUEST_MODULES_SUCCESS,
+    modules
+  })
+}
 
 export const fetchCourses = () => dispatch => {
   dispatch({

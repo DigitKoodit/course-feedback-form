@@ -1,5 +1,11 @@
 export default [
   {
+    "id": "DIGIT_COURSE",
+    "name": "Yleistä",
+    "credits": 0,
+    "moduleId": "DIGIT"
+  },
+  {
     "id": "MATE5398",
     "name": "Insinöörimatematiikka A",
     "credits": 5,

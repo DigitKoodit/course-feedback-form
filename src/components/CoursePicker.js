@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
-const CoursePicker = ({ courses, activeCourse, handleSelect }) => {
+// TODO: replace select with somethign more customizable. Select box looks hideous on Firefow
+const CoursePicker = ({ modules, courses, activeCourse, handleSelect }) => {
 
   return (
     <div className="row center-xs">
@@ -12,14 +13,25 @@ const CoursePicker = ({ courses, activeCourse, handleSelect }) => {
           className="select"
           onChange={handleSelect}
         >
-          {courses.map(course => (
-            <option
-              className="option"
-              key={course.id}
-              value={course.id}
+          {modules.map(module => (
+            <optgroup
+              key={module.id}
+              label={module.name}
             >
-              {course.name}
-            </option>
+              {courses.map(course => {
+                if (course.moduleId === module.id) {
+                  return (
+                    <option
+                      key={course.id}
+                      className="option"
+                      value={course.id}
+                    >
+                      {course.name}
+                    </option>
+                  )
+                }
+              })}
+            </optgroup>
           ))}
         </select>
       </div>
@@ -28,10 +40,15 @@ const CoursePicker = ({ courses, activeCourse, handleSelect }) => {
 }
 
 CoursePicker.propTypes = {
+  modules: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  })).isRequired,
   courses: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    credits: PropTypes.number.isRequired
+    credits: PropTypes.number.isRequired,
+    moduleId: PropTypes.string.isRequired
   })).isRequired,
   activeCourse: PropTypes.shape({
     name: PropTypes.string.isRequired,

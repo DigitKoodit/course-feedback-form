@@ -8,13 +8,14 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import initialState from './reducers/initialState';
 import { hasUserAuthenticated } from './actions/authActions'
-import { fetchCourses, fetchComments } from './actions/courseActions';
+import { fetchModules, fetchCourses, fetchComments } from './actions/courseActions';
 
 
 const store = configureStore(initialState);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+store.dispatch(fetchModules());
 store.dispatch(fetchCourses());
 store.dispatch(hasUserAuthenticated());
 

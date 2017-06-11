@@ -155,9 +155,9 @@ export const writeJsonArrayToFile = (json, filename) => {
 export const formatString = text => {
   if (text && text.length > 0) {
     // Check whethet string contains roman numerals or course tag and lowercase everything else
-    // e.g. 'Insinöörimatematiikka A' or 'Matemaattinen optimointi II'
+    // e.g. 'Insinöörimatematiikka A' or 'Kemia III'
     const parts = text.split(' ').map((part, index) => {
-      if (index < text.split(' ').length - 1 || part.length >= 3) {
+      if (index < text.split(' ').length - 1 || part.length > 3) {
         return part.toLowerCase();
       }
       return part;
