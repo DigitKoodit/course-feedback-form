@@ -44,8 +44,6 @@ export const fetchComments = courseId => dispatch => {
   const comments = dummyComments.filter(comment => comment.courseId === courseId)
     .sort((a, b) => compareAlphabetically(a.courseId, b.courseId));
 
-  console.log(dummyComments);
-
   dispatch({
     type: types.REQUEST_FEEDBACKS_SUCCESS,
     activeCourseId: courseId,

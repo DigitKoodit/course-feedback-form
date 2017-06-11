@@ -29,7 +29,13 @@ class CommentContainer extends Component {
         <div className="col-xs-12 col-sm-10 col-md-8 margin-1">
           <InputForm
             content={newComment}
-            onSubmit={() => submitFeedback(activeCourse.id, newComment)}
+            onSubmit={() => {
+              submitFeedback(activeCourse.id, newComment)
+              //FIXME: add newComment to redux state?
+              this.setState({
+                newComment: ''
+              });
+            }}
             onChange={this.handleChange}
           />
         </div>

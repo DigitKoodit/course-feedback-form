@@ -9,7 +9,6 @@ body {
     background: -moz-linear-gradient(right, #f1f1f1, #d2d2d2);
     background: -o-linear-gradient(right, #f1f1f1, #d2d2d2);
     background: linear-gradient(to left, #f1f1f1, #d2d2d2);
-    background: #f1f1f1;
 }
 
 h1 {
@@ -181,8 +180,7 @@ a {
 #snackbar {
     visibility: hidden;
     min-width: 16rem;
-    -webkit-margin-start: -8rem;
-    margin-left: -8rem;
+    max-width: 10%;
     background-color: $background-dark;
     color: $light-text;
     text-align: center;
@@ -190,10 +188,12 @@ a {
     border-radius: 0.2em;
     border: none;
     padding: 1rem;
-    position: fixed;
+    position: absolute;
     z-index: 1;
-    left: 50%;
     bottom: 2rem;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
     &.show {
         visibility: visible;
         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -280,8 +280,7 @@ a {
     -moz-transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms ease;
     -o-transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms ease;
     transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms ease;
-    
-    &:hover {
+    &:focus, &:hover {
         -webkit-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.1);
@@ -295,10 +294,8 @@ a {
     }
 }
 
-
 p.footnote {
-  color: #999;
-  margin: 0 0.5rem;
-  padding: 0;
+    color: #999;
+    margin: 0 0.5rem;
+    padding: 0;
 }
-

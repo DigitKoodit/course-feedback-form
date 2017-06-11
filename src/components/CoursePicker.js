@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 // TODO: replace select with somethign more customizable. Select box looks hideous on Firefow
+// FIXME: selection doesn't change after feedback has been submitted
 const CoursePicker = ({ modules, courses, activeCourse, handleSelect }) => {
 
   return (
