@@ -1,4 +1,4 @@
-# Sami Nieminen's portfolio website
+# Digit's soon to be course feedback website
 Using [react-redux-base](https://github.com/niemisami/react-redux-base) repo as the base for the site.
 
 ## What? How?
@@ -6,7 +6,7 @@ Using [react-redux-base](https://github.com/niemisami/react-redux-base) repo as 
 ### Precondition 
 Ensure that [`npm`](https://docs.npmjs.com/getting-started/installing-node) is installed.
 #### JWT and MongoDB configurations
-> MongoDB is commented out from this project 
+> MongoDB is commented out from this project for now.
 
 1. Create a new file `tools/config.json`
 2. Add `dbUri` and `jwtSecret` values:
@@ -19,7 +19,7 @@ Ensure that [`npm`](https://docs.npmjs.com/getting-started/installing-node) is i
 ### Usage
 ```
 // Clone the repository:
-git clone https://github.com/niemisami/react-redux-base.git
+git clone https://github.com/DigitKoodit/course-feedback-form.git
 ```
 ```
 // Install dependencies
