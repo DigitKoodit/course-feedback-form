@@ -36,6 +36,7 @@ class CommentContainer extends Component {
                 newComment: ''
               });
             }}
+            maxCharacters={1500}
             onChange={this.handleChange}
           />
         </div>
