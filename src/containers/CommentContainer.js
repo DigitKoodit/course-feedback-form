@@ -12,8 +12,9 @@ class CommentContainer extends Component {
       newComment: ''
     }
   }
+  sendFeedback = () => {
 
-
+  }
   handleChange = value => {
     this.setState({
       newComment: value
@@ -28,7 +29,7 @@ class CommentContainer extends Component {
         <div className="col-xs-12 col-sm-10 col-md-8 margin-1">
           <InputForm
             content={newComment}
-            onSubmit={() => console.log('implement submit')}
+            onSubmit={this.sendFeedback}
             onChange={this.handleChange}
           />
         </div>
@@ -38,6 +39,10 @@ class CommentContainer extends Component {
 }
 
 CommentContainer.propTypes = {
+  activeCourse: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired
 }
 
 const mapStateToProps = state => ({

@@ -3,7 +3,6 @@ import Textarea from '../components/Textarea';
 
 const InputForm = ({
   content,
-  errors,
   onSubmit,
   onChange
 }) => {
@@ -20,7 +19,8 @@ const InputForm = ({
           onTextChange={onChange}
           value={content}
         />
-        <button className="btn" type="submit">Lähetä</button>
+        <p className="footnote align-right">Merkkejä {content.length}</p>
+        <button className={'margin-1 btn ' + (content.length < 5 && 'disabled')} type="submit">Lähetä</button>
       </form>
     </div>
   )
@@ -30,9 +30,6 @@ const InputForm = ({
 
 InputForm.propTypes = {
   content: PropTypes.string.isRequired,
-  errors: PropTypes.shape({
-    commentForm: PropTypes.string
-  }).isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired
 }
