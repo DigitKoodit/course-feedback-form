@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import InputForm from '../components/InputForm';
+import { submitFeedback } from '../actions/courseActions';
 
 class CommentContainer extends Component {
 
@@ -12,9 +13,7 @@ class CommentContainer extends Component {
       newComment: ''
     }
   }
-  sendFeedback = () => {
 
-  }
   handleChange = value => {
     this.setState({
       newComment: value
@@ -23,13 +22,14 @@ class CommentContainer extends Component {
 
   render() {
     const { newComment } = this.state;
+    const { activeCourse, submitFeedback } = this.props;
 
     return (
       <div className="row center-xs">
         <div className="col-xs-12 col-sm-10 col-md-8 margin-1">
           <InputForm
             content={newComment}
-            onSubmit={this.sendFeedback}
+            onSubmit={() => submitFeedback(activeCourse.id, newComment)}
             onChange={this.handleChange}
           />
         </div>
@@ -42,15 +42,11 @@ CommentContainer.propTypes = {
   activeCourse: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  submitFeedback: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-  newComment: state.course.newComment
-})
-
-
-export default connect(mapStateToProps)(CommentContainer);
+export default connect(state => state, { submitFeedback })(CommentContainer);
 
 
 

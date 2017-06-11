@@ -2,7 +2,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   displaySnackbar: false,
-  snackbarMessage: ""
+  snackbarMessage: ''
 }
 
 export default function uiReducer(state = initialState, action) {

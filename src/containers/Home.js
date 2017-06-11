@@ -2,36 +2,23 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import CoursePicker from '../components/CoursePicker';
 import CommentContainer from './CommentContainer';
+import { selectActiveCourse } from '../actions/courseActions';
+import Snackbar from '../components/Snackbar';
 
 class Home extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeCourse: this.initialActiveCourse
-    }
-  }
-
-  initialActiveCourse = {
-    name: '',
-    id: '-1',
-    credits: -1
-  }
-
   handleSelect = event => {
-    const { courses } = this.props;
+    const { selectActiveCourse, courses } = this.props;
     const selectedCourseId = event.target.value;
-    this.setState({
-      // if find gives no result set default course
-      activeCourse: courses.find(course => course.id === selectedCourseId) || this.initialActiveCourse
-    })
+
+    // if find gives no result set default course
+    selectActiveCourse(courses.find(course => course.id === selectedCourseId));
+
     event.preventDefault();
   }
 
   render() {
-    const { activeCourse } = this.state;
-    const { modules, courses } = this.props;
+    const { activeCourse, modules, courses } = this.props;
     return (
       <div className="row center-xs">
         <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6 app-card">
@@ -46,12 +33,18 @@ class Home extends Component {
             activeCourse={activeCourse}
           />
         </div >
+        <Snackbar />
       </div >
     )
   }
 }
 
 Home.propTypes = {
+  activeCourse: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    credits: PropTypes.number.isRequired
+  }).isRequired,
   modules: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
@@ -60,13 +53,15 @@ Home.propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     credits: PropTypes.number.isRequired
-  })).isRequired
+  })).isRequired,
+  selectActiveCourse: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
+  activeCourse: state.course.activeCourse,
   modules: state.course.modules,
   courses: state.course.courses
 })
 
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, { selectActiveCourse })(Home);

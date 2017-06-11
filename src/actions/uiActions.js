@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 
-const timeoutLong = 3000;
+const timeoutLong = 2900; // FIXME: snackbar flashes 100ms when timeout is set to 3000
 // const timeoutShort = 1000;
 
 export const displaySnackbar = message => dispatch => {

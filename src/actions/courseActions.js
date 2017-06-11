@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 
+import { displaySnackbar } from './uiActions';
 import dummyModules from '../dummyModules';
 import dummyCourses from '../dummyCourses';
 import dummyComments from '../dummyComments';
@@ -35,7 +36,7 @@ export const fetchCourses = () => dispatch => {
 
 export const fetchComments = courseId => dispatch => {
   dispatch({
-    type: types.REQUEST_COMMENTS
+    type: types.REQUEST_FEEDBACKS
   });
 
   //TODO: fetch comment by given courseId
@@ -46,7 +47,7 @@ export const fetchComments = courseId => dispatch => {
   console.log(dummyComments);
 
   dispatch({
-    type: types.REQUEST_COMMENTS_SUCCESS,
+    type: types.REQUEST_FEEDBACKS_SUCCESS,
     activeCourseId: courseId,
     comments
   })
@@ -59,4 +60,29 @@ const compareAlphabetically = (a, b) => {
     return 1;
   }
   return 0;
+}
+
+export const selectActiveCourse = activeCourse => dispatch => {
+  if (!activeCourse) {
+    dispatch({
+      type: types.SELECT_ACTIVE_COURSE_FAIL
+    })
+  } else {
+    dispatch({
+      type: types.SELECT_ACTIVE_COURSE,
+      activeCourse
+    })
+  }
+}
+
+export const submitFeedback = (courseId, feedback) => dispatch => {
+  if (courseId && feedback && feedback.length > 0) {
+    // TODO: create API
+    setTimeout(() => {
+      displaySnackbar('Kiitos palautteestasi!')(dispatch);
+      dispatch({
+        type: types.SUBMIT_FEEDBACK_SUCCESS
+      })
+    }, 500)
+  }
 }
