@@ -2,6 +2,12 @@
 Using [react-redux-base](https://github.com/niemisami/react-redux-base) repo as the base for the site.
 
 ## What? How?
+A feedback service which lets users give open feedback about the Turku University's courses. Currently contains courses only for software engineering degree (Digit ry).
+
+## TODO
+- Bind clearing the form to server response
+- Let user select major  
+- Let user select year
 
 ### Precondition 
 Ensure that [`npm`](https://docs.npmjs.com/getting-started/installing-node) is installed.
