@@ -18,6 +18,24 @@ export const fetchModules = () => dispatch => {
         type: types.REQUEST_MODULES_SUCCESS,
         modules
       })
+    }).catch(error => {
+      // Axios error object
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
     })
 
   // const modules = dummyModules;
@@ -105,14 +123,14 @@ export const submitFeedback = (courseId, feedback) => dispatch => {
         })
       }
     })
-    .catch(err => {
-      // Catch any result codes than 200
-      console.log(err);
-      displaySnackbar('Jokin meni pieleen. Kokeile uudestaan!')(dispatch);
-      dispatch({
-        type: types.SUBMIT_FEEDBACK_FAIL
+      .catch(err => {
+        // Catch any result codes than 200
+        console.log(err);
+        displaySnackbar('Jokin meni pieleen. Kokeile uudestaan!')(dispatch);
+        dispatch({
+          type: types.SUBMIT_FEEDBACK_FAIL
+        })
       })
-    })
     // setTimeout(() => {
     //   displaySnackbar('Kiitos palautteestasi!')(dispatch);
     //   dispatch({
