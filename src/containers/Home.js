@@ -7,9 +7,9 @@ import Snackbar from '../components/Snackbar';
 
 class Home extends Component {
 
-  handleSelect = event => {
+  handleSelect = value => {
     const { selectActiveCourse, courses } = this.props;
-    const selectedCourseId = event.target.value;
+    const selectedCourseId = value;
 
     // if find gives no result set default course
     selectActiveCourse(courses.find(course => course.id === selectedCourseId));

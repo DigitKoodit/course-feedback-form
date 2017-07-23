@@ -9,7 +9,6 @@ const App = ({ children }) => (
   </div>
 )
 
-
 App.propTypes = {
   children: PropTypes.object.isRequired
 };

@@ -55,8 +55,10 @@ export default {
   resolve: {
     extensions: ['', '.js', '.css', '.scss'],
     alias: {
-      bourbon: path.join(__dirname, '/node_modules/flexboxgrid/dist/flexboxgrid.min.css'),
-      normalize: path.join(__dirname, '/node_modules/normalize.css')
+      flexboxgrid: path.join(__dirname, '/node_modules/flexboxgrid/dist/flexboxgrid.min.css'),
+      normalize: path.join(__dirname, '/node_modules/normalize.css'),
+      reactVirtualized: path.join(__dirname, '/node_modules/react-virtualized/styles.css'),
+      reactSelect: path.join(__dirname, '/node_modules/react-select/dist/react-select.css')
     }
   }
 };
