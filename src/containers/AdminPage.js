@@ -1,32 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Immutable from 'immutable';
 // import { Column, Table, AutoSizer } from 'react-virtualized';
 import CoursePicker from '../components/CoursePicker';
 import CommentContainer from './CommentContainer';
 import { selectActiveCourse } from '../actions/courseActions';
-import Table from './SortableTabel/Table.example';
+import Table from './SortableTable/Table.example';
+import { SortDirection } from 'react-virtualized';
 
 
 const list = [
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' },
-  { name: 'Brian Vaughn', description: 'Software engineer' }
+  { index: 1, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 2, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 3, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 4, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 5, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 6, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 7, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 8, name: 'Brian Vaughn', description: 'Software engineer' },
+  { index: 9, name: 'Brian Vaughn', description: 'Software engineer' }
   // And so on...
 ];
+const immutableList = Immutable.List(list);
 
 class AdminPage extends Component {
 
@@ -47,7 +42,7 @@ class AdminPage extends Component {
         <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6 app-card">
           <h1>Kurssipalautemokkulan hallintapaneeli</h1>
           <Table
-            list={list}
+            list={immutableList}
           />
         </div >
       </div >

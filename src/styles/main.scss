@@ -4,6 +4,7 @@
 @import '~reactSelect';
 @import 'general';
 @import 'variables';
+@import 'sortableTable';
 body {
     background: #f1f1f1;
     /* fallback for old browsers */
@@ -270,12 +271,12 @@ a {
     }
     .Select-option {
         padding-left: 2rem;
-    }
-    .Select-option.is-disabled {
-        cursor: default;
-        padding-left: 1rem;
-        font-weight: bold;
-        color: black;
+        &.is-disabled {
+            cursor: default;
+            padding-left: 1rem;
+            font-weight: bold;
+            color: black;
+        }
     }
 }
 

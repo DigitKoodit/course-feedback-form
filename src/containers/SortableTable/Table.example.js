@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
-import { AutoSizer, Column, Table } from 'react-virtualized';
-import SortDirection from './SortDirection';
-import SortIndicator from './SortIndicator';
+import { AutoSizer, Column, Table, SortDirection, SortIndicator } from 'react-virtualized';
 
 export default class TableExample extends PureComponent {
   // static contextTypes = {
@@ -18,12 +16,14 @@ export default class TableExample extends PureComponent {
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
-      rowCount: 1000,
+      rowCount: 100,
       scrollToIndex: undefined,
       sortBy: 'index',
       sortDirection: SortDirection.ASC,
       useDynamicRowHeight: false
     };
+
+    const { list } = this.props;
 
     this._getRowHeight = this._getRowHeight.bind(this);
     this._headerRenderer = this._headerRenderer.bind(this);
@@ -35,7 +35,7 @@ export default class TableExample extends PureComponent {
   }
 
   _getDatum(list, index) {
-    return list[index % list.size];
+    return list.get(index % list.size);
   }
 
   _getRowHeight({ index }) {
@@ -57,7 +57,7 @@ export default class TableExample extends PureComponent {
     const { list } = this.props;
     const { rowCount } = this.state;
 
-    return rowCount <= list.length;
+    return rowCount <= list.size;
   }
 
   _noRowsRenderer() {
@@ -154,6 +154,7 @@ export default class TableExample extends PureComponent {
               {!hideIndexRow &&
                 <Column
                   label='Index'
+                  cellDataGetter={({ rowData }) => rowData.index}
                   dataKey='index'
                   disableSort={!this._isSortEnabled()}
                   width={60}
@@ -170,6 +171,7 @@ export default class TableExample extends PureComponent {
                 label='The description label is really long so that it will be truncated'
                 dataKey='random'
                 className={'exampleColumn'}
+                cellRenderer={({ cellData }) => cellData}
                 flexGrow={1}
               />
             </Table>}

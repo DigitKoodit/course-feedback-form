@@ -1,3 +1,4 @@
+
 {
   "presets": [
     "react",
@@ -11,5 +12,7 @@
     "development": {
       // "presets": ["react-hmre"]
     }
-  }
+  },
+  "sourceMaps": "inline",
+  "retainLines": true
 }

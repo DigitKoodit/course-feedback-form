@@ -32,6 +32,7 @@
     "express-session": "^1.15.2",
     "flexboxgrid": "^6.3.1",
     "iconv-lite": "^0.4.17",
+    "immutable": "^3.8.1",
     "jsonwebtoken": "^7.3.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.9.5",
