@@ -1,24 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Immutable from 'immutable';
-// import { Column, Table, AutoSizer } from 'react-virtualized';
-import CoursePicker from '../components/CoursePicker';
-import CommentContainer from './CommentContainer';
 import { selectActiveCourse } from '../actions/courseActions';
 import Table from './SortableTable/Table.example';
-import { SortDirection } from 'react-virtualized';
 
 
 const list = [
-  { index: 1, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 2, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 3, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 4, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 5, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 6, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 7, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 8, name: 'Brian Vaughn', description: 'Software engineer' },
-  { index: 9, name: 'Brian Vaughn', description: 'Software engineer' }
+  { index: 1, name: 'Sami Nieminen', random: 'Software engineer' },
+  { index: 2, name: 'Brian Vaughn', random: 'Software engineer' },
+  { index: 3, name: 'Marine Amison', random: 'Software engineer' },
+  { index: 4, name: 'Samara Berrier', random: 'Software engineer' },
+  { index: 5, name: 'Soo Reiling', random: 'Software engineer' },
+  { index: 6, name: 'Buddy Panos', random: 'Software engineer' },
+  { index: 7, name: 'Zelma Mayers', random: 'Software engineer' },
+  { index: 8, name: 'Shyla Mable', random: 'Software engineer' },
+  { index: 9, name: 'Kristie Yard', random: 'Software engineer' },
+  { index: 9, name: 'Jonas Curci', random: 'Software engineer' }
   // And so on...
 ];
 const immutableList = Immutable.List(list);

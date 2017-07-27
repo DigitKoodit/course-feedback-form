@@ -16,10 +16,10 @@ export default class TableExample extends PureComponent {
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
-      rowCount: 100,
+      rowCount: 10,
       scrollToIndex: undefined,
       sortBy: 'index',
-      sortDirection: SortDirection.ASC,
+      sortDirection: SortDirection.DESC,
       useDynamicRowHeight: false
     };
 
@@ -54,10 +54,7 @@ export default class TableExample extends PureComponent {
   }
 
   _isSortEnabled() {
-    const { list } = this.props;
-    const { rowCount } = this.state;
-
-    return rowCount <= list.size;
+    return true;
   }
 
   _noRowsRenderer() {
@@ -163,7 +160,7 @@ export default class TableExample extends PureComponent {
                 dataKey='name'
                 disableSort={!this._isSortEnabled()}
                 headerRenderer={this._headerRenderer}
-                width={90}
+                width={110}
               />
               <Column
                 width={210}

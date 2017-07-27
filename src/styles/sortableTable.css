@@ -12,6 +12,7 @@
 }
 .headerColumn {
   text-transform: none;
+  text-align: left;
 }
 .exampleColumn {
   white-space: nowrap;
