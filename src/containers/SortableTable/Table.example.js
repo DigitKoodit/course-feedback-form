@@ -8,46 +8,54 @@ export default class TableExample extends PureComponent {
 
   constructor(props) {
     super(props);
+    const { list } = this.props;
 
     this.state = {
+      list,
       disableHeader: false,
       headerHeight: 30,
-      height: 270,
+      height: 800,
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
-      rowCount: 10,
+      rowCount: list.size,
       scrollToIndex: undefined,
-      sortBy: 'index',
+      sortBy: 'id',
       sortDirection: SortDirection.DESC,
       useDynamicRowHeight: false
     };
 
-    const { list } = this.props;
-
     this._getRowHeight = this._getRowHeight.bind(this);
     this._headerRenderer = this._headerRenderer.bind(this);
     this._noRowsRenderer = this._noRowsRenderer.bind(this);
-    this._onRowCountChange = this._onRowCountChange.bind(this);
-    this._onScrollToRowChange = this._onScrollToRowChange.bind(this);
     this._rowClassName = this._rowClassName.bind(this);
     this._sort = this._sort.bind(this);
   }
 
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.list) {
+      this.setState(
+        {
+          list: nextProps.list,
+          rowCount: nextProps.list.size
+        });
+    }
+  }
+
   _getDatum(list, index) {
-    return list.get(index % list.size);
+    return list.get(index);
   }
 
   _getRowHeight({ index }) {
-    const { list } = this.props;
+    const { list } = this.state;
 
     return this._getDatum(list, index).size;
   }
 
   _headerRenderer({ dataKey, sortBy, sortDirection }) {
     return (
-      <div>
-        Full Name
+      <div className='align-left header-key'>
+        {dataKey}
         {sortBy === dataKey && <SortIndicator sortDirection={sortDirection} />}
       </div>
     );
@@ -59,26 +67,6 @@ export default class TableExample extends PureComponent {
 
   _noRowsRenderer() {
     return <div className={'noRows'}>No rows</div>;
-  }
-
-  _onRowCountChange(event) {
-    const rowCount = parseInt(event.target.value, 10) || 0;
-
-    this.setState({ rowCount });
-  }
-
-  _onScrollToRowChange(event) {
-    const { rowCount } = this.state;
-    let scrollToIndex = Math.min(
-      rowCount - 1,
-      parseInt(event.target.value, 10)
-    );
-
-    if (isNaN(scrollToIndex)) {
-      scrollToIndex = undefined;
-    }
-
-    this.setState({ scrollToIndex });
   }
 
   _rowClassName({ index }) {
@@ -114,7 +102,9 @@ export default class TableExample extends PureComponent {
       useDynamicRowHeight
     } = this.state;
 
-    const { list } = this.props;
+    const { onItemClicked } = this.props;
+
+    const { list } = this.state;
     const sortedList = this._isSortEnabled()
       ? list
         .sortBy(item => item[sortBy])
@@ -125,7 +115,7 @@ export default class TableExample extends PureComponent {
       : list;
 
     const rowGetter = ({ index }) => this._getDatum(sortedList, index);
-
+    
     return (
       <div>
         <AutoSizer disableHeight>
@@ -142,6 +132,7 @@ export default class TableExample extends PureComponent {
               rowHeight={useDynamicRowHeight ? this._getRowHeight : rowHeight}
               rowGetter={rowGetter}
               rowCount={rowCount}
+              onRowClick={onItemClicked}
               scrollToIndex={scrollToIndex}
               sort={this._sort}
               sortBy={sortBy}
@@ -150,26 +141,29 @@ export default class TableExample extends PureComponent {
             >
               {!hideIndexRow &&
                 <Column
-                  label='Index'
-                  cellDataGetter={({ rowData }) => rowData.index}
-                  dataKey='index'
+                  label="ID"
+                  cellDataGetter={({ rowData }) => rowData.id}
+                  headerRenderer={this._headerRenderer} // here just as an example
+                  dataKey="id"
                   disableSort={!this._isSortEnabled()}
-                  width={60}
+                  className={'align-left exampleColumn'}
+                  width={width}
                 />}
               <Column
-                dataKey='name'
+                dataKey="name"
                 disableSort={!this._isSortEnabled()}
-                headerRenderer={this._headerRenderer}
-                width={110}
+                headerRenderer={this._headerRenderer} // here just as an example
+                className={'align-left exampleColumn'}
+                width={width}
               />
               <Column
-                width={210}
-                disableSort
-                label='The description label is really long so that it will be truncated'
-                dataKey='random'
+                disableSort={!this._isSortEnabled()}
+                label="Kommentteja"
+                dataKey="feedback"
                 className={'exampleColumn'}
                 cellRenderer={({ cellData }) => cellData}
-                flexGrow={1}
+                width={width}
+                flexGrow={0}
               />
             </Table>}
         </AutoSizer>

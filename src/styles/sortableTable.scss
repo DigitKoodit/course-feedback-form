@@ -1,0 +1,90 @@
+.Table {
+    width: 100%;
+    margin-top: 1rem;
+    outline: 0;
+}
+
+.ReactVirtualized__Grid,
+.headerColumn {
+    outline: 0;
+}
+
+.header-key {
+    text-transform: uppercase;
+}
+
+.headerRow {
+    border-bottom: 1px solid #e0e0e0;
+    padding-right: 0 !important;
+}
+
+.evenRow {
+    background-color: #e5f7ff;
+}
+
+.oddRow {
+    background-color: #fdfdfd;
+}
+
+.evenRow,
+.oddRow {
+    cursor: pointer;
+    &:hover {
+        background: #7dd8ff;
+        color: #fcfcfc;
+    }
+    &:active {
+        background: #3ca0cc;
+    }
+}
+
+.headerColumn {
+    text-transform: none;
+}
+
+.exampleColumn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    line-height: 150%;
+}
+
+.checkboxLabel {
+    margin-left: .5rem;
+}
+
+.checkboxLabel:first-of-type {
+    margin-left: 0;
+}
+
+.noRows {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    color: #bdbdbd;
+}
+
+.comment-table {
+    width: 100%;
+    margin-top: 1rem;
+    border: none;
+    tbody {
+        background-color: #e5f7ff;
+        .table-row {
+            td {
+                padding: 1rem;
+                max-width: 80%;
+            }
+        }
+        tr:nth-child(odd) {
+            background-color: #fdfdfd;
+        }
+    }
+}

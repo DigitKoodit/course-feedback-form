@@ -67,14 +67,15 @@ export const fetchComments = courseId => dispatch => {
 
   //TODO: fetch comment by given courseId
 
-  const comments = dummyComments.filter(comment => comment.courseId === courseId)
-    .sort((a, b) => compareAlphabetically(a.courseId, b.courseId));
-
-  dispatch({
-    type: types.REQUEST_FEEDBACKS_SUCCESS,
-    activeCourseId: courseId,
-    comments
-  })
+  axios.get(`http://localhost:3037/api/feedback/${courseId}/2017`)
+    .then(response => {
+      const comments = response.data;
+      console.log(response.data);
+      dispatch({
+        type: types.REQUEST_FEEDBACK_SUCCESS,
+        comments
+      })
+    });
 }
 
 const compareAlphabetically = (a, b) => {

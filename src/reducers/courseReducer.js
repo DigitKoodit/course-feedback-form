@@ -29,7 +29,7 @@ export default function courseReducer(state = initialState, action) {
         ...state,
         courses: action.courses
       };
-    case types.REQUEST_FEEDBACKS_SUCCESS:
+    case types.REQUEST_FEEDBACK_SUCCESS:
       return {
         ...state,
         comments: action.comments,
